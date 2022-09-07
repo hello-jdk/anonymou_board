@@ -24,7 +24,7 @@ function loader(app) {
  * @returns {express.Application}
  */
 function routersRegister(app) {
-  //app.use("/api/post", postRouter);
+  app.use("/api/post", postRouter);
 
   return app;
 }
