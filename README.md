@@ -22,9 +22,14 @@
 
 ## 사용기술
 
-`express`
-`mysql2`
-`sequelize`
+`nodejs` `express.js` `mysql` `sequelize` `swagger`
 
-## 스키마
-<img width="400" alt="1" src="https://user-images.githubusercontent.com/57665888/188879492-bcfee6f2-eca7-4546-b215-a6773487f59f.png">
+## ERD
+
+<img width="200" alt="1" src="https://user-images.githubusercontent.com/57665888/188879492-bcfee6f2-eca7-4546-b215-a6773487f59f.png">
+
+## API DOCS
+
+```
+localhost:PORT/docs
+```
