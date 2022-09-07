@@ -1,4 +1,5 @@
 const { postModel } = require("../models/index");
+const { DataTypes } = require("sequelize");
 
 async function createPost(post) {
   try {
@@ -22,4 +23,8 @@ async function updatePost(post) {
   await postModel.update(post, { where: { id: post.id }, raw: true });
 }
 
-module.exports = { createPost, findOnebyId, updatePost };
+async function deletePost(post) {
+  await postModel.destroy({ where: { id: post.id } });
+}
+
+module.exports = { createPost, findOnebyId, updatePost, deletePost };

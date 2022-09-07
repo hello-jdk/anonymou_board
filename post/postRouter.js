@@ -10,5 +10,6 @@ router.put(
   postMiddleware.inValidPost,
   postController.updatePost
 );
+router.delete("/", postController.deletePost);
 
 module.exports = router;
