@@ -35,7 +35,7 @@ function middlewareLoader(app) {
  * @returns {express.Application}
  */
 function routersRegister(app) {
-  app.use("/api/post", postRouter);
+  app.use("/api/posts", postRouter);
 
   return app;
 }
