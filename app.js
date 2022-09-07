@@ -21,7 +21,7 @@ function databaseConnection() {
  * @param {express.Application} app
  * @returns {express.Application}
  */
-function middlewareLoad(app) {
+function middlewareLoader(app) {
   app.use(logger("dev"));
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
@@ -47,7 +47,7 @@ async function expressInit() {
   const app = express();
 
   databaseConnection();
-  middlewareLoad(app);
+  middlewareLoader(app);
   routersRegister(app);
 
   return app.listen(PORT, () => {
