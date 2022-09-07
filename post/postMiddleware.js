@@ -1,7 +1,7 @@
 const { body, validationResult } = require("express-validator");
 const { StatusCodes } = require("http-status-codes");
 
-const inValidCreate = [
+const inValidPost = [
   body("title")
     .notEmpty()
     .withMessage("제목을 입력해주세요.")
@@ -32,4 +32,21 @@ const inValidCreate = [
   },
 ];
 
-module.exports = { inValidCreate };
+const isValidPostUpdate = [
+  body("id")
+    .notEmpty()
+    .withMessage("id를 입력해주세요.")
+    .isNumeric()
+    .withMessage("id값은 숫자입니다."),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res
+        .status(StatusCodes.BAD_REQUEST)
+        .send({ message: errors.array().map((e) => e.msg) });
+    }
+    next();
+  },
+];
+
+module.exports = { inValidPost, isValidPostUpdate };

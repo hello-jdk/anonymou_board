@@ -6,4 +6,8 @@ async function passwordEncrypt(password) {
   return hashed;
 }
 
-module.exports = { passwordEncrypt };
+async function passwordValid(incomedPassword, hashedPassword) {
+  return await bcrypt.compare(incomedPassword, hashedPassword);
+}
+
+module.exports = { passwordEncrypt, passwordValid };

@@ -9,4 +9,17 @@ async function createPost(post) {
   }
 }
 
-module.exports = { createPost };
+async function findOnebyId(id) {
+  try {
+    const Post = await postModel.findByPk(id, { raw: true });
+    return Post;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+async function updatePost(post) {
+  await postModel.update(post, { where: { id: post.id }, raw: true });
+}
+
+module.exports = { createPost, findOnebyId, updatePost };
