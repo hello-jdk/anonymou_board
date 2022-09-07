@@ -26,4 +26,14 @@ async function deletePost(post) {
   await postModel.destroy({ where: { id: post.id } });
 }
 
-module.exports = { createPost, findOnebyId, updatePost, deletePost };
+async function findListbyPage(page) {
+  return await postModel.findAll({
+    attributes: ["id", "userId", "title", "content"],
+    offset: (page - 1) * 20,
+    limit: 20,
+    order: [["id", "DESC"]],
+    raw: true,
+  });
+}
+
+module.exports = { createPost, findOnebyId, updatePost, deletePost, findListbyPage };

@@ -31,4 +31,9 @@ async function deletePost(post) {
   await postRepository.deletePost(post);
 }
 
-module.exports = { createPost, updatePost, deletePost };
+async function findPagePost(page) {
+  const listOfPage = await postRepository.findListbyPage(page);
+  return listOfPage;
+}
+
+module.exports = { createPost, updatePost, deletePost, findPagePost };
