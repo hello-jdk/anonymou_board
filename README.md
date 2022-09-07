@@ -33,3 +33,11 @@
 ```
 localhost:PORT/docs
 ```
+
+<img width="700" alt="1" src="https://user-images.githubusercontent.com/57665888/188884562-cd70d548-c9e9-4783-aee3-45512208c7c6.png">
+<img width="700" alt="21" src="https://user-images.githubusercontent.com/57665888/188884567-05727fdc-0f9b-4c68-bf0d-59d02ec8c5bb.png">
+<img width="700" alt="22" src="https://user-images.githubusercontent.com/57665888/188884571-d9d4d134-6be4-436e-a200-abc57aec9f93.png">
+<img width="700" alt="31" src="https://user-images.githubusercontent.com/57665888/188884574-e96cde8b-b64c-4b92-92ab-4f35abfeb9ee.png">
+<img width="700" alt="32" src="https://user-images.githubusercontent.com/57665888/188884577-80141597-5120-4c5a-9c92-3285a1797ec7.png">
+<img width="700" alt="41" src="https://user-images.githubusercontent.com/57665888/188884580-c0086169-2537-4d47-ae10-fae84dbd4c01.png">
+<img width="700" alt="42" src="https://user-images.githubusercontent.com/57665888/188884584-a51feb52-836d-488e-95bc-1da4020eed5e.png">
