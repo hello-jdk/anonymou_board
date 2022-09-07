@@ -16,11 +16,18 @@ paths:
     get:
       tags:
         - posts
-      summary: 게시글 검색
-      description: List of Posts
+      summary: 게시글 목록 검색
+      description: 요청한 페이지의 게시글들을 최신순으로 20개씩 반환합니다
       parameters:
-        - page: 검색할 페이지
-      response:
+        - name: page
+          in: query
+          description: 검색할 페이지
+          required: true
+          explode: true
+          shema:
+            type: INT
+            example: 1
+      responses:
         200:
           description: OK
           content:
@@ -28,12 +35,172 @@ paths:
               schema:
                 type: array
                 items:
+                  type: object
+                  properties:
+                    id:
+                      type: INT
+                      example: 20
+                    userId:
+                      type: STRING
+                      example: "TESTID"
+                    title:
+                      type: STRING
+                      example: "제목20"
+                    content:
+                      type: STRING
+                      example: "내용20"
+                  
+
     post:
       tags:
         - posts
+      summary: 게시글 생성
+      description: 요청된 정보로 게시글을 생성합니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: STRING
+                  description: 유저 아이디
+                  example: "TESTID"
+                userPw:
+                  type: STRING
+                  description: 유저 패스워드
+                  example: "pw12345"
+                title:
+                  type: STRING
+                  description: 게시글 제목
+                  example: "게시글 제목입니다."
+                content:
+                  type: STRING
+                  description: 게시글 내용
+                  example: "게시글 내용입니다."
+      responses:
+        200:
+          description: 생성 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                example: { "message": "OK" }
+        400:
+          description: 잘못된 요청시 메세지가 표시됩니다.
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message":
+                      [
+                        "제목은 최대 20자를 넘을 수 없습니다.",
+                        "내용은 최대 200자를 넘을 수 없습니다.",
+                        "비밀번호는 최소 6자리 이상 입력해주세요.",
+                        "비밀번호는 숫자를 1개 이상 포함해야합니다.",
+                      ],
+                  }
+
     put:
       tags:
         - posts
+      summary: 게시글 수정
+      description: 요청된 정보로 게시글을 수정합니다. 비밀번호(userPw)와 게시글번호(id)를 필수로 요구합니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: INT
+                  description: 게시글 번호
+                  example: "1"
+                userId:
+                  type: STRING
+                  description: 바꿀 유저 아이디
+                  example: "changedID"
+                userPw:
+                  type: STRING
+                  description: 유저 패스워드
+                  example: "pw12345"
+                title:
+                  type: STRING
+                  description: 바꿀 게시글 제목
+                  example: "수정된 제목입니다."
+                content:
+                  type: STRING
+                  description: 바꿀 게시글 수정
+                  example: "수정된 내용입니다."
+      responses:
+        200:
+          description: 수정 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                example: { "message": "OK" }
+        400:
+          description: 잘못된 요청시 메세지가 표시됩니다.
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  {
+                    "message":
+                      [
+                        "id를 입력해주세요.",
+                        "id값은 숫자입니다.",
+                        "제목은 최대 20자를 넘을 수 없습니다.",
+                        "내용은 최대 200자를 넘을 수 없습니다.",
+                        "비밀번호는 최소 6자리 이상 입력해주세요.",
+                        "비밀번호는 숫자를 1개 이상 포함해야합니다.",
+                      ],
+                  }
+        400:
+          description: 글이 존재하지 않거나 비밀번호가 틀릴 시 반려됩니다.
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  { "message": ["해당 글이 존재하지 않습니다.","비밀번호가 일치하지 않습니다."] }
+
     delete:
       tags:
         - posts
+      summary: 게시글 삭제
+      description: 요청된 고유 게시글 번호로 게시글을 삭제합니다. 비밀번호(userPw)와 게시글번호(id)를 필수로 요구합니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: INT
+                  description: 게시글 번호
+                  example: "1"
+                userPw:
+                  type: STRING
+                  description: 유저 패스워드
+                  example: "pw12345"
+      responses:
+        200:
+          description: 삭제 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                example: { "message": "OK" }
+        400:
+          description: 글이 존재하지 않거나 비밀번호가 틀릴 시 반려됩니다.
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                    { "message": ["해당 글이 존재하지 않습니다.","비밀번호가 일치하지 않습니다."] }
