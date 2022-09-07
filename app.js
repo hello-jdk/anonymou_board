@@ -2,6 +2,9 @@ const { PORT } = require("./config/config");
 
 const express = require("express");
 const logger = require("morgan");
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
+const swaggerDocument = YAML.load("./swagger/swagger.yaml");
 
 const postRouter = require("./post/postRouter");
 
@@ -36,6 +39,7 @@ function middlewareLoader(app) {
  */
 function routersRegister(app) {
   app.use("/api/posts", postRouter);
+  app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
   return app;
 }

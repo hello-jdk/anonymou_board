@@ -21,7 +21,7 @@ paths:
       parameters:
         - page: 검색할 페이지
       response:
-        "200"
+        200:
           description: OK
           content:
             application/json:
