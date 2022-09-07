@@ -5,6 +5,9 @@ const logger = require("morgan");
 
 const postRouter = require("./post/postRouter");
 
+/**
+ * 웹 서비스에 사용할 DataBase 설정
+ */
 function databaseConnection() {
   const { sequelize } = require("./models");
 
