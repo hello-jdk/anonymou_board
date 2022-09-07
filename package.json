@@ -1,0 +1,22 @@
+{
+  "name": "anonymous_board",
+  "version": "1.0.0",
+  "description": "비밀번호를 이용하여 익명게시판 만들기",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [],
+  "author": "JDK",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "http-status-codes": "^2.2.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.4"
+  }
+}
