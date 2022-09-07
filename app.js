@@ -5,6 +5,7 @@ const logger = require("morgan");
 
 const postRouter = require("./post/postRouter");
 const { sequelize } = require("./models");
+
 /**
  * 웹 서비스에 사용할 middleware 설정
  * @param {express.Application} app
