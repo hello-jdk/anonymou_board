@@ -9,10 +9,10 @@ module.exports = function (sequelize) {
         autoIncrement: true,
         primaryKey: true,
       },
-      user_id: {
+      userId: {
         type: DataTypes.STRING,
       },
-      user_pw: {
+      userPw: {
         type: DataTypes.STRING,
       },
       title: {
@@ -21,22 +21,11 @@ module.exports = function (sequelize) {
       content: {
         type: DataTypes.STRING,
       },
-      created_at: {
-        type: "TIMESTAMP",
-        defaultValue: DataTypes.NOW,
-        allowNull: false,
-      },
-      updated_at: {
-        type: "TIMESTAMP",
-        defaultValue: DataTypes.NOW,
-        onUpdate: DataTypes.NOW,
-        allowNull: false,
-      },
     },
     {
       charset: "utf8mb4",
       collate: "utf8mb4_general_ci",
-      timestamps: false,
+      timestamps: true,
     }
   );
 

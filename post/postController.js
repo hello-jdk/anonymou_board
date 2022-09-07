@@ -34,4 +34,15 @@ async function deletePost(req, res) {
   }
 }
 
-module.exports = { createPost, updatePost, deletePost };
+async function listOfPost(req, res) {
+  const page = req.params.page;
+  try {
+    const list = await postService.findPagePost(page);
+    return res.status(StatusCodes.OK).send({ data: list });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ message: error.message });
+  }
+}
+
+module.exports = { createPost, updatePost, deletePost, listOfPost };

@@ -1,17 +1,27 @@
-const { DB, PORT } = require("./config/config");
+const { PORT } = require("./config/config");
 
 const express = require("express");
 const logger = require("morgan");
 
 const postRouter = require("./post/postRouter");
-const { sequelize } = require("./models");
+
+/**
+ * 웹 서비스에 사용할 DataBase 설정
+ */
+function databaseConnection() {
+  const { sequelize } = require("./models");
+
+  sequelize.sync({ force: false }).catch((error) => {
+    console.error(error);
+  });
+}
 
 /**
  * 웹 서비스에 사용할 middleware 설정
  * @param {express.Application} app
  * @returns {express.Application}
  */
-function loader(app) {
+function middlewareLoader(app) {
   app.use(logger("dev"));
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
@@ -35,13 +45,9 @@ function routersRegister(app) {
  */
 async function expressInit() {
   const app = express();
-  const { sequelize } = require("./models");
 
-  sequelize.sync({ force: false }).catch((error) => {
-    console.error(error);
-  });
-
-  loader(app);
+  databaseConnection();
+  middlewareLoader(app);
   routersRegister(app);
 
   return app.listen(PORT, () => {
