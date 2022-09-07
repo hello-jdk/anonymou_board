@@ -17,6 +17,8 @@ const inValidCreate = [
     .notEmpty()
     .withMessage("비밀번호를 입력해주세요.")
     .trim()
+    .isLength({ min: 6 })
+    .withMessage("비밀번호는 최소 6자리 이상 입력해주세요.")
     .matches("[0-9]")
     .withMessage("비밀번호는 숫자를 1개 이상 포함해야합니다."),
   (req, res, next) => {
