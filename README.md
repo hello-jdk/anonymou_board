@@ -25,3 +25,6 @@
 `express`
 `mysql2`
 `sequelize`
+
+## 스키마
+<img width="400" alt="1" src="https://user-images.githubusercontent.com/57665888/188879492-bcfee6f2-eca7-4546-b215-a6773487f59f.png">
