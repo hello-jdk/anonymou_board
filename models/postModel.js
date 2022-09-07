@@ -9,10 +9,10 @@ module.exports = function (sequelize) {
         autoIncrement: true,
         primaryKey: true,
       },
-      user_id: {
+      userId: {
         type: DataTypes.STRING,
       },
-      user_pw: {
+      userPw: {
         type: DataTypes.STRING,
       },
       title: {

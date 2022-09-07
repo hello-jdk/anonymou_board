@@ -12,8 +12,8 @@ const inValidPost = [
     .withMessage("내용을 입력해주세요.")
     .isLength({ max: 200 })
     .withMessage("내용은 최대 200자를 넘을 수 없습니다."),
-  body("user_id").notEmpty().withMessage("아이디를 입력해주세요.").trim(),
-  body("user_pw")
+  body("userId").notEmpty().withMessage("아이디를 입력해주세요.").trim(),
+  body("userPw")
     .notEmpty()
     .withMessage("비밀번호를 입력해주세요.")
     .trim()

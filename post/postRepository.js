@@ -1,5 +1,4 @@
 const { postModel } = require("../models/index");
-const { DataTypes } = require("sequelize");
 
 async function createPost(post) {
   try {
