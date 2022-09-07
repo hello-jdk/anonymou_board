@@ -1,0 +1,39 @@
+openapi: 3.0.3
+info:
+  title: anonymous_board
+  description: |-
+    익명 게시판에 대한 생성,수정,삭제 및 목록 API를 제공합니다.
+servers:
+  - url: http://localhost:3000
+tags:
+  - name: posts
+    description: 익명 게시판 관련 CRUD API
+    externalDocs:
+      description: Find out more
+      url: http://localhost:3000/posts
+paths:
+  /posts:
+    get:
+      tags:
+        - posts
+      summary: 게시글 검색
+      description: List of Posts
+      parameters:
+        - page: 검색할 페이지
+      response:
+        "200"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+    post:
+      tags:
+        - posts
+    put:
+      tags:
+        - posts
+    delete:
+      tags:
+        - posts
